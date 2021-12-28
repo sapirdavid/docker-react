@@ -1,0 +1,11 @@
+language: generic
+sudo: required
+services:
+  - docker #need a copy of docker running
+
+before_install:
+  - docker build -t sapirdavid/docker-react -f Dockerfile.dev . # build our image using Dockefile.dev
+
+script:
+  - docker run -e CI=true sapirdavid/docker-react npm run test # how to run our test suite
+
